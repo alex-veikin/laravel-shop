@@ -1,9 +1,9 @@
 @extends('layout')
 
 @section('content')
-    @if(Request::input('search'))
+    @if(Request::input('q'))
         @if($products->count())
-            <h2 class="text-center">Результат поиска по запросу "{{ Request::input('search') }}"</h2>
+            <h2 class="text-center">Результат поиска по запросу "{{ Request::input('q') }}"</h2>
 
             <div class="row">
                 @foreach($products as $product)
@@ -23,7 +23,7 @@
                 @endforeach
             </div>
         @else
-            <h2 class="text-center">По запросу "{{ Request::input('search') }}" ничего не найдено.</h2>
+            <h2 class="text-center">По запросу "{{ Request::input('q') }}" ничего не найдено.</h2>
         @endif
     @else
         <h2 class="text-center">Введите поисковой запрос.</h2>

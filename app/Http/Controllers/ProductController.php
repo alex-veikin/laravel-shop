@@ -9,9 +9,7 @@ class ProductController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -21,9 +19,8 @@ class ProductController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function all(Request $request)
     {
@@ -41,29 +38,21 @@ class ProductController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function search(Request $request)
     {
-        //        dd($request->search);
-
-        $products = Product::where('title', 'LIKE', '%'.$request->search.'%')
-                           ->orWhere('description', 'LIKE',
-                               '%'.$request->search.'%')
-                           ->get();;
-
+        $products = Product::where('title', 'LIKE', '%' . $request->q . '%')
+                           ->orWhere('description', 'LIKE', '%' . $request->q . '%')
+                           ->get();
 
         return view('search', compact('products'));
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Product $product
-     *
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Product $product)
     {

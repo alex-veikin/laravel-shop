@@ -2,7 +2,7 @@
 
 Route::get('/', 'ProductController@index')->name('home');
 
-Route::post('search', 'ProductController@search')->name('search');
+Route::get('search', 'ProductController@search')->name('search');
 
 Route::group(['prefix'=>'products', 'as'=>'products.'], function (){
     Route::get('/', 'ProductController@all')->name('index');

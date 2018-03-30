@@ -41,8 +41,8 @@
             {{--</li>--}}
         </ul>
 
-        {!! Form::open(['route' => 'search', 'class' => 'form-inline my-2 my-lg-0']) !!}
-        {!! Form::search('search', null, ['class' => 'form-control mr-sm-2', 'aria-label' => 'Search', 'placeholder' => 'Поиск']) !!}
+        {!! Form::open(['route' => 'search', 'class' => 'form-inline my-2 my-lg-0', 'method' => 'GET']) !!}
+        {!! Form::search('q', null, ['class' => 'form-control mr-sm-2', 'aria-label' => 'Search', 'placeholder' => 'Поиск']) !!}
         {!! Form::submit('Поиск', ['class' => 'btn btn-outline-success my-2 my-sm-0']) !!}
         {!! Form::close() !!}
     </div>
